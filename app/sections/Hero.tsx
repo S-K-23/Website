@@ -43,7 +43,7 @@ export function Hero() {
             className="flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.3em] text-fg-muted"
           >
             <span className="h-px w-8 bg-accent" />
-            <span>portfolio · v2026.05</span>
+            <span>portfolio</span>
           </motion.div>
 
           {/* Name */}

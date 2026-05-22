@@ -212,7 +212,6 @@ export function MatrixField() {
     if (!reduce) {
       rafId = requestAnimationFrame(frame);
     } else {
-      // Draw one static frame for accessibility
       frame();
       cancelAnimationFrame(rafId);
     }

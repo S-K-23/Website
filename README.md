@@ -1,6 +1,6 @@
 # Sohum Kashyap — Personal Website
 
-Editorial-cyberpunk-neural portfolio built with Next.js 15, Three.js, and Framer Motion.
+Editorial-cyberpunk-neural portfolio built with Next.js 15, vanilla canvas, and Framer Motion.
 
 ## Develop
 
@@ -13,7 +13,7 @@ npm run dev
 ## Stack
 - Next.js 15 (App Router) + TypeScript
 - Tailwind CSS 3
-- Three.js / @react-three/fiber / @react-three/drei (neural-network hero)
+- Vanilla 2D Canvas (`MatrixField`) for the full-page interactive lattice
 - Framer Motion (scroll & micro-interactions)
 - Lenis (smooth scroll)
 - Self-hosted Google Fonts: Instrument Serif, Inter, JetBrains Mono

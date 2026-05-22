@@ -110,7 +110,7 @@ export function Contact() {
           </div>
           <div className="flex items-center gap-2">
             <span className="w-1.5 h-1.5 rounded-full bg-accent-2 animate-pulse-soft" />
-            built with next.js, three.js, framer-motion · 2026
+            built with next.js, canvas, framer-motion · 2026
           </div>
         </motion.div>
       </div>

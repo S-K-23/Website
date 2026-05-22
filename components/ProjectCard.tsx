@@ -64,7 +64,6 @@ export function ProjectCard({
         featured ? "p-8 md:p-10 md:col-span-2 md:row-span-2" : "p-6 md:p-7"
       }`}
     >
-      {/* Subtle inner glow that tracks cursor */}
       <motion.div
         aria-hidden
         className="pointer-events-none absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"

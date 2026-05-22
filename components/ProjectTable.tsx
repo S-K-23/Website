@@ -35,7 +35,6 @@ export function ProjectTable() {
     }
   }
 
-  // Group by category, sort within each group.
   const groups = useMemo(() => {
     const byCat = new Map<ProjectCategory, Project[]>();
     for (const p of allProjects) {
@@ -64,7 +63,6 @@ export function ProjectTable() {
 
   return (
     <div className="mt-16">
-      {/* Section header */}
       <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-6">
         <div>
           <div className="font-mono text-[11px] uppercase tracking-[0.3em] text-fg-muted">
@@ -86,9 +84,7 @@ export function ProjectTable() {
         </div>
       </div>
 
-      {/* Table */}
       <div className="rounded-2xl border border-rule bg-bg-elev/40 backdrop-blur-sm overflow-hidden">
-        {/* Header row */}
         <div className="hidden md:grid grid-cols-[1.6fr_2.2fr_0.8fr_0.6fr_0.3fr] gap-4 px-6 py-3 border-b border-rule bg-black/30 font-mono text-[10px] uppercase tracking-[0.2em] text-fg-muted">
           <SortHeader
             label="name"
@@ -115,7 +111,6 @@ export function ProjectTable() {
           <span className="text-right">↗</span>
         </div>
 
-        {/* Body — grouped */}
         <AnimatePresence initial={false} mode="wait">
           <motion.div
             key={`${sortCol}-${sortDir}`}
@@ -205,7 +200,6 @@ function Row({ project }: { project: Project }) {
       className="group block px-6 py-4 border-b border-rule last:border-b-0 hover:bg-accent/[0.04] transition-colors"
     >
       <div className="grid md:grid-cols-[1.6fr_2.2fr_0.8fr_0.6fr_0.3fr] gap-2 md:gap-4 items-baseline">
-        {/* Name */}
         <div className="flex flex-col gap-1">
           <span className="font-serif text-lg md:text-xl text-fg group-hover:text-accent transition-colors">
             {project.name}
@@ -215,7 +209,6 @@ function Row({ project }: { project: Project }) {
           </span>
         </div>
 
-        {/* Stack */}
         <div className="flex flex-wrap gap-1.5">
           {project.stack.slice(0, 6).map((s) => (
             <span
@@ -227,17 +220,14 @@ function Row({ project }: { project: Project }) {
           ))}
         </div>
 
-        {/* Category (mobile shows category inline) */}
         <div className={`hidden md:block font-mono text-[11px] uppercase tracking-[0.18em] ${categoryAccent[project.category]}`}>
           {project.category}
         </div>
 
-        {/* Year */}
         <div className="hidden md:block font-mono text-[11px] tracking-[0.15em] text-fg-muted">
           {project.year}
         </div>
 
-        {/* Arrow */}
         <div className="hidden md:flex justify-end">
           <ArrowUpRight
             size={16}
@@ -245,7 +235,6 @@ function Row({ project }: { project: Project }) {
           />
         </div>
 
-        {/* Mobile-only meta line */}
         <div className="md:hidden mt-1 flex items-center gap-3 font-mono text-[10px] uppercase tracking-[0.18em]">
           <span className={categoryAccent[project.category]}>{project.category}</span>
           <span className="text-fg-muted">{project.year}</span>
