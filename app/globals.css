@@ -1,0 +1,165 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: #08090b;
+  --bg-elev: #0e1014;
+  --fg: #ededee;
+  --fg-muted: #8a8f98;
+  --accent: #00e5ff;
+  --accent-2: #b5ff3a;
+  --accent-3: #ff3dcb;
+  --rule: rgba(255, 255, 255, 0.08);
+  --grid: rgba(255, 255, 255, 0.035);
+}
+
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html,
+body {
+  background: var(--bg);
+  color: var(--fg);
+  overflow-x: hidden;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+::selection {
+  background: var(--accent);
+  color: #000;
+}
+
+/* Hide default cursor everywhere except inputs (custom cursor takes over) */
+@media (pointer: fine) {
+  body {
+    cursor: none;
+  }
+  a,
+  button,
+  [role="button"],
+  input,
+  textarea {
+    cursor: none;
+  }
+}
+
+/* Reduced motion fallback */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+/* Ambient radial vignettes layered on body (the matrix lattice is drawn by MatrixField) */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(800px 500px at 12% 10%, rgba(0, 229, 255, 0.04), transparent 60%),
+    radial-gradient(700px 500px at 90% 80%, rgba(255, 61, 203, 0.03), transparent 60%);
+  z-index: 0;
+}
+
+/* Faint scanlines (cyberpunk hint), barely visible */
+.scanlines::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: repeating-linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.012) 0px,
+    rgba(255, 255, 255, 0.012) 1px,
+    transparent 1px,
+    transparent 3px
+  );
+  z-index: 1;
+  mix-blend-mode: overlay;
+}
+
+/* Neon ring glow utility */
+.neon-edge {
+  position: relative;
+}
+.neon-edge::after {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  padding: 1px;
+  background: conic-gradient(
+    from var(--ang, 0deg),
+    transparent 0%,
+    var(--accent) 25%,
+    transparent 50%,
+    var(--accent-3) 75%,
+    transparent 100%
+  );
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+          mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+.neon-edge:hover::after {
+  opacity: 1;
+  animation: spin-conic 4s linear infinite;
+}
+
+@property --ang {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
+}
+
+@keyframes spin-conic {
+  to {
+    --ang: 360deg;
+  }
+}
+
+/* Mono terminal block dots */
+.term-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  display: inline-block;
+}
+
+/* Display serif rendering */
+.font-serif {
+  font-feature-settings: "ss01", "ss02", "ss03";
+}
+
+/* Marquee for ticker bands */
+@keyframes marquee {
+  from { transform: translate3d(0, 0, 0); }
+  to { transform: translate3d(-50%, 0, 0); }
+}
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee 50s linear infinite;
+}
+
+/* Hairline rule used between sections */
+.rule {
+  height: 1px;
+  background: var(--rule);
+  width: 100%;
+}
