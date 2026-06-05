@@ -6,6 +6,7 @@ import { ScrollProgress } from "@/components/ScrollProgress";
 import { SmoothScroll } from "@/components/SmoothScroll";
 import { CustomCursor } from "@/components/CustomCursor";
 import { MatrixField } from "@/components/MatrixField";
+import { Analytics } from "@vercel/analytics/next";
 
 const sans = Inter({
   subsets: ["latin"],
@@ -53,6 +54,7 @@ export default function RootLayout({
           <Navigation />
           <main className="relative z-10">{children}</main>
         </SmoothScroll>
+        <Analytics />
       </body>
     </html>
   );
